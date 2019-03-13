@@ -4,16 +4,17 @@ import math
 b = float(input('Ingresa b: '))
 n = int(input('Ingresa n: '))
 tol = float(input('Ingresa tol: '))"""
-a = 0
-b = math.pi / 2
-n = 10
-tol = 0.001
+a = 25
+b = 26
+n = 1000
+tol = 0.01
 
 def g(x):
     return (x*x*x + 4*x*x - 10)
 
 def f(x):
-    return (math.cos(x) - x)
+    #return ((1/math.sqrt(2*math.pi))*math.exp(-0.5*x*x)) + (0.1*math.sin(math.pi*x))
+    return 20406.25 - (804.25*x) - (20106.25 * math.exp(-0.04*x))
 
 p = 0
 flag = False
