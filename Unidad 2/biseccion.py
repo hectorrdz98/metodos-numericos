@@ -4,8 +4,8 @@ import math
 b = float(input('Ingresa b: '))
 n = int(input('Ingresa n: '))
 tol = float(input('Ingresa tol: '))"""
-a = 25
-b = 26
+a = 4
+b = 5
 n = 1000
 tol = 0.01
 

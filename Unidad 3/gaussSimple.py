@@ -1,8 +1,9 @@
 import numpy as np
 import re
 
-fileName = 'cosa1.txt'
+fileName = 'examen2a.txt'
 nRows = 0
+decimales = None
 
 with open(fileName) as file:
     for line in file:
@@ -16,7 +17,7 @@ with open(fileName) as file:
         cont2 = 0
         if line[len(line) - 1] == '\n':
             line = line[0:len(line) - 1]
-        datas = re.split(r'[^\S\n]', line)
+        datas = re.split(r'[^\S\n]+', line)
         #print(datas)
         for data in datas:
             original[cont][cont2] = float(data)
@@ -33,11 +34,15 @@ coefs = original
 for i in range(0, nRows-1):
     for n in range(i+1, nRows):
         m = (-coefs[n][i] / coefs[i][i])
+        if decimales:
+            m = np.around(m, decimals=decimales)
         #print('coefs[{}][{}]: {}, coefs[{}][{}]: {}'.format(n, i, coefs[n][i], i, i, coefs[i][i]))
         #print('m: {}'.format(m))
         cont = 0
         for coef in coefs[n]:
             coefs[n][cont] = (m * coefs[i][cont]) + coef
+            if decimales:
+                coefs[n][cont] = np.around(coefs[n][cont], decimals=decimales)
             cont += 1
     print(coefs)
     print()
@@ -48,6 +53,8 @@ values = np.zeros(nRows) # Results
 
 cont = nRows - 1
 values[cont] = coefs[cont][cont+1] / coefs[cont][cont] # último
+if decimales:
+    values[cont] = np.around(values[cont], decimals=decimales)
 #print('values[{}]: {}'.format(cont, values[cont]))
 
 cont2 = cont
@@ -61,12 +68,17 @@ for n in reversed(range(0, cont)):
         partialAns += (coefs[n][cont-i] * values[cont-i])
     #    print('partialAns: {}'.format(partialAns))
 
+    if decimales:
+        partialAns = np.around(partialAns, decimals=decimales)
+
     actual = coefs[n][cont2-1]
     last = coefs[n][nRows]
 
     #print('actual {}, last {}'.format(actual, last))
 
     values[n] = (last - partialAns) / actual
+    if decimales:
+        values[n] = np.around(values[n], decimals=decimales)
     #print('values[{}]: {}'.format(n, values[n]))
     cont2 -= 1
 
