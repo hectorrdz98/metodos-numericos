@@ -1,6 +1,6 @@
 import numpy as np
 
-textColors = {
+colors = {
     'reset': '\033[0m',
     'green': '\033[32m',
     'red': '\033[31m',
@@ -19,17 +19,16 @@ os.system('color')          # Activate color mode in terminal
 
 
 x = 1.5
-Xs = np.array([1.0, 1.3, 1.6, 1.9, 2.2])
-FXs = np.array([0.7651977, 0.6200860, 0.4554022, 0.2818186, 0.1103623])
+Xs = np.array([ 1.0, 1.3, 1.6, 1.9, 2.2 ])
+FXs = np.array([ 0.7651977, 0.6200860, 0.4554022, 0.2818186, 0.1103623 ])
 decimals = 7
 res = np.zeros_like(Xs)
 
-print('\n{}{}Partes del polinomio{}\n'.format(textColors['bold'], textColors['blue'], textColors['reset']))
+print('\n{}{}Partes del polinomio{}\n'.format(colors['bold'], colors['blue'], colors['reset']))
 
 for k in range(len(Xs)):
 
     supPart = ''
-    supPol = [0, 0, 1]
     infPart = 1
 
     resP = 1
@@ -38,17 +37,25 @@ for k in range(len(Xs)):
         if i != k:
             supPart += '(x-{})'.format(Xs[i])
             infPart *= (Xs[k] - Xs[i])
-            supPol[0] += 1
-            supPol[1] += -(Xs[i])
-            supPol[2] *= -(Xs[i])
             resP *= (x-Xs[i])
 
-    res[k] = (FXs[k] / infPart) * resP
+    preRes = (FXs[k] / infPart) * resP
+    if decimals:
+        preRes = np.round(preRes, decimals=decimals)
+    res[k] = preRes
 
     print('{} * ({} / {}) = {}'.format(
         FXs[k], supPart, infPart, res[k]
     ))
 
-print('\n{}{}Resultado: {}{}'.format(
-    textColors['bold'], textColors['green'], np.sum(res), textColors['reset']
+
+res = np.sum(res)
+if decimals:
+    res = np.round(res, decimals=decimals)
+
+# Mostrar resultado
+print('\n{}{}f({} {} {}): {}{}{}\n'.format(
+    colors['bold'], colors['blue'], 
+    colors['yellow'], x, colors['blue'], 
+    colors['yellow'], res, colors['reset']
 ))
