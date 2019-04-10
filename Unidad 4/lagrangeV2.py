@@ -18,11 +18,11 @@ import os
 os.system('color')          # Activate color mode in terminal
 
 
-x = 1.5
-Xs = np.array([ 1.0, 1.3, 1.6, 1.9, 2.2 ])
-FXs = np.array([ 0.7651977, 0.6200860, 0.4554022, 0.2818186, 0.1103623 ])
+x = 2.5
+Xs = np.array([ 0, 1, 2, 3, 4 ])
+FXs = np.array([ 1, 0.5403023, -0.4161468, -0.9899924, -0.6536436 ])
 decimals = 7
-res = np.zeros_like(Xs)
+res = []
 
 print('\n{}{}Partes del polinomio{}\n'.format(colors['bold'], colors['blue'], colors['reset']))
 
@@ -40,13 +40,15 @@ for k in range(len(Xs)):
             resP *= (x-Xs[i])
 
     preRes = (FXs[k] / infPart) * resP
+    
     if decimals:
         preRes = np.round(preRes, decimals=decimals)
-    res[k] = preRes
+    res.append(preRes)
 
     print('{} * ({} / {}) = {}'.format(
         FXs[k], supPart, infPart, res[k]
     ))
+    print()
 
 
 res = np.sum(res)
