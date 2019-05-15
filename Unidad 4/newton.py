@@ -17,10 +17,10 @@ os.system('color')          # Activate color mode in terminal
 # Datos de entrada
 # x       = [ 0, 1, 2, 3, 4 ]
 # fx      = [ 1, 0.5403023, -0.4161468, -0.9899924, -0.6536436 ] 
-x       = [ 500, 900, 1400, 1800 ]
-fx      = [ 9, 13.4, 18.7, 23 ]
+x       = [12, 18, 24]
+fx      = [148, 156, 147]
 demals  = 7
-xReq    = 1150
+xReq    = 0
 fReq    = 0
 
 # Número de x
