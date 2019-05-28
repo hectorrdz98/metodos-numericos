@@ -1,0 +1,50 @@
+Definición:
+
+Dado el rectangulo R = {(t,y) | a<=t<=b, c<=y<=d} suponga que f(t,y) es continua en R.
+Se dice que la función verifica una condición de Lipschitz con respecto a su variable y en R
+si existe una constante L > 0 tal que | f(t,y1)-f(t,y2) | <= L| y1-y2 | para cualquiera de
+(t, y1), (t, y2) que pertenecen a R. La constante L se llama constante de Lipschitz de f.
+
+Teorema:
+
+Supongamos que y(t) está definida en un rectangulo R. Si existe una constante L > 0 tal que:
+    | fy(t, y) | <= L para toda (t, y) que pertenecen a R
+Entonces f verifica una condición de Lipschitz con respecto a su variable y en R siendo L su
+constante de Lipschitz.
+
+
+
+Ejemplo:
+
+R = { (t, y) | 0<=t<=3, 0<=y<=5 }
+
+y'(t) = t^2 - y 
+y(t) = ce^(-t) + t^2 - 2t +2
+
+
+Definición:
+
+| f(t,y1)-f(t,y2) | <= L| y1-y2 |
+
+.- f(t, y1) = (d/dt) y(t) = t^2 - 0 
+.- f(t, y2) = (d/dt) y(t) = t^2 - 5
+
+| t^2 - t^2 + 5 | = 5 <= L | 0-5 |
+                    5 <= 5L             =>      1 <= L    para toda L >= 1 que pertenece a R
+
+
+Teorema:
+
+| fy(t, y) | <= L
+
+f(t, y) = t^2 - y
+| fy(t, y) | = | -1 | = 1
+
+=> si L = 2
+
+Como L > 0 y
+    | fy(t, y) | = 1 <= 2 para todo (t, y) que pertenece a R
+
+    f tiene una constante de Lipschitz
+
+
